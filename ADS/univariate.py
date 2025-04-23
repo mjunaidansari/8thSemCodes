@@ -1,0 +1,18 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+tips = sns.load_dataset('tips')
+fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(10, 12))
+sns.histplot(data=tips, x='total_bill', bins=20, kde=True, ax=ax1)
+ax1.set_title('Histogram of Total Bill')
+ax1.set_xlabel('Total Bill ($)')
+ax1.set_ylabel('Frequency')
+sns.boxplot(x='total_bill', data=tips, ax=ax2, orient='h', palette='Set1')
+ax2.set_title('Quartiles of Total Bill')
+ax2.set_xlabel('Total Bill ($)')
+ax2.set_yticks([]) 
+sns.kdeplot(data=tips, x='total_bill', ax=ax3, fill=True)
+ax3.set_title('Kernel Density Estimation of Total Bill')
+ax3.set_xlabel('Total Bill ($)')
+ax3.set_ylabel('Density')
+plt.tight_layout()
+plt.show()
